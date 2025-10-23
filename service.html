@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خدمة الاستشارات الهندسية</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>مكتب أيــــــــوان </h1>
+        <p>للاستشارات الهندسية</p>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html#home">الرئيسية</a></li>
+        <li><a href="index.html#services">الخدمات</a></li>
+        <li><a href="index.html#contact">اتصل بنا</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="service-detail">
+    <div class="container">
+      <h1 id="svc-title">خدمة الاستشارات الهندسية</h1>
+      <p id="svc-summary" class="section-subtitle"></p>
+
+      <section class="svc-benefits">
+        <h2>لماذا هذه الخدمة؟</h2>
+        <ul id="svc-benefits-list"></ul>
+      </section>
+
+      <section class="svc-steps">
+        <h2>خطوات تنفيذ الخدمة</h2>
+        <ol id="svc-steps-list"></ol>
+      </section>
+
+      <section class="svc-contact">
+        <h2>اتصل بنا اليوم</h2>
+        <p>أدخل بياناتك وسنتواصل معك لشرح التفاصيل وتقديم عرض سعر مناسب.</p>
+        <form class="quote-form">
+          <div class="form-group"><input type="text" placeholder="الاسم" required></div>
+          <div class="form-group"><input type="email" placeholder="البريد الإلكتروني" required></div>
+          <div class="form-group"><input type="tel" placeholder="رقم الجوال" required></div>
+          <div class="form-group"><textarea rows="5" placeholder="نبذة عن طلبك" required></textarea></div>
+          <button type="submit" class="btn-submit">إرسال الطلب</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SERVICES = {
+      'license-issue': {
+        title: 'إصدار رخص البناء',
+        summary: 'نقوم بإصدار رخص البناء وفق الأنظمة والاشتراطات المحلية بأعلى درجات الدقة والسرعة.',
+        benefits: [
+          'مراجعة المتطلبات وتجهيز المستندات',
+          'متابعة المعاملة حتى الإصدار',
+          'التوافق مع اللوائح والاشتراطات'
+        ],
+        steps: [
+          'استشارة أولية لفهم المشروع',
+          'جمع وتجهيز المستندات المطلوبة',
+          'رفع الطلب ومتابعته مع الجهات المختصة',
+          'استلام الرخصة وتسليمها للعميل'
+        ]
+      },
+      'license-renew': {
+        title: 'تجديد وتعديل رخص البناء',
+        summary: 'تجديد أو تعديل رخص البناء القائمة وتحديثها بما يتوافق مع التغييرات المطلوبة.',
+        benefits: ['تقييم الوضع الحالي', 'تقليل المخاطر القانونية', 'تحديث الاشتراطات'],
+        steps: [
+          'تقييم الاحتياج والتغييرات',
+          'تحديث المخططات والمستندات',
+          'تقديم الطلب ومتابعته',
+          'إصدار الموافقة والرخصة المعدلة'
+        ]
+      },
+      'civil-defense': {
+        title: 'إصدار رخصة الدفاع المدني وترخيص السلامة',
+        summary: 'خدمة شاملة للحصول على اعتماد الدفاع المدني لمشروعك.',
+        benefits: ['مطابقة اشتراطات السلامة', 'متابعة فنية حتى الاعتماد', 'تقارير فنية معتمدة'],
+        steps: [
+          'مسح الموقع ومراجعة المخاطر',
+          'إعداد المخططات والتقارير',
+          'تقديم الطلب والتنسيق مع الجهات',
+          'الحصول على الاعتماد'
+        ]
+      },
+      'architectural-design': {
+        title: 'التصميم المعماري',
+        summary: 'تصميمات معمارية عصرية تجمع بين الوظيفة والجمال.',
+        benefits: ['تصميم مبتكر', 'استغلال أمثل للمساحات', 'مطابقة احتياجات العميل'],
+        steps: ['جلسة فهم المتطلبات', 'مخططات أولية', 'تطوير التصميم', 'التسليم النهائي']
+      },
+      'site-coordination': {
+        title: 'تنسيق المواقع',
+        summary: 'تنسيق موقع المشروع والتخطيطات وفق أحدث المعايير.',
+        benefits: ['تحسين الانسيابية', 'تقليل التعارضات', 'رفع كفاءة التنفيذ'],
+        steps: ['زيارة موقع', 'تحليل المتطلبات', 'إصدار مخطط التنسيق']
+      },
+      'demolition-license': {
+        title: 'إصدار رخص الهدم',
+        summary: 'إصدار رخص الهدم وفق المتطلبات النظامية مع التأكد من إجراءات السلامة ورفع المخلفات.',
+        benefits: ['تسريع إجراءات الترخيص', 'التوافق مع اشتراطات السلامة والبلدية', 'تقليل التأخير بالمشروع'],
+        steps: ['جمع المستندات المطلوبة', 'تقديم الطلب للجهة المختصة', 'متابعة حتى إصدار الرخصة']
+      },
+      'engineering-supervision': {
+        title: 'الإشراف الهندسي',
+        summary: 'خدمات إشراف هندسي متكاملة لضمان جودة التنفيذ والالتزام بالمخططات والمواصفات.',
+        benefits: ['جودة تنفيذ أعلى', 'تقليل الأخطاء والتكاليف', 'تقارير دورية للعميل'],
+        steps: ['تسلم الموقع', 'زيارات وجولات تفتيش', 'تقارير فنية وتوصيات', 'استلام مرحلي ونهائي']
+      },
+      'transfer-building-license': {
+        title: 'نقل ملكية رخصة بناء',
+        summary: 'إتمام إجراءات نقل ملكية الرخصة بين المالكين بسرعة وبشكل نظامي.',
+        benefits: ['إجراءات نظامية صحيحة', 'تحديث بيانات الرخصة بسلاسة', 'تقليل المخاطر القانونية'],
+        steps: ['مراجعة المستندات', 'تقديم طلب النقل', 'اعتماد النقل وتحديث الرخصة']
+      },
+      'facade-exterior-design': {
+        title: 'التصميم الخارجي وتصميم الواجهات',
+        summary: 'تصميم واجهات عصرية متوافقة مع الهوية المعمارية والاشتراطات.',
+        benefits: ['جاذبية بصرية', 'توافق مع الاشتراطات المحلية', 'تحسين قيمة العقار'],
+        steps: ['فهم المتطلبات والذوق', 'مقترحات تصميمية', 'تطوير واعتماد التصميم']
+      },
+      'interior-design': {
+        title: 'التصميم الداخلي',
+        summary: 'حلول تصميم داخلي عملية وجميلة تلائم استخدامات المساحات المختلفة.',
+        benefits: ['استغلال أمثل للمساحات', 'مواد وتشطيبات ملائمة', 'راحة وظيفية وجمالية'],
+        steps: ['أخذ القياسات والمتطلبات', 'مخططات وأفكار أولية', 'لوحات تنفيذية ومواصفات']
+      },
+      'structural-design': {
+        title: 'التصميم الإنشائي',
+        summary: 'تصميم إنشائي آمن واقتصادي وفق الأكواد والمعايير المعتمدة.',
+        benefits: ['سلامة عالية', 'كفاءة في التكلفة', 'توافق مع الأكواد'],
+        steps: ['نموذج إنشائي مبدئي', 'حسابات وتصميم المقاطع', 'لوحات إنشائية تفصيلية']
+      },
+      'mechanical-design': {
+        title: 'التصميم الميكانيكي',
+        summary: 'تصميم أنظمة التكييف والسباكة والميكانيكا للمباني بكفاءة عالية.',
+        benefits: ['كفاءة الطاقة', 'سهولة الصيانة', 'ملاءمة بيئية'],
+        steps: ['دراسة الأحمال والمتطلبات', 'اختيار الأنظمة المناسبة', 'مخططات تنفيذية ومواصفات']
+      },
+      'electrical-design': {
+        title: 'التصميم الكهربائي',
+        summary: 'تصميم شبكات الكهرباء والإنارة والضعيفة وفق المعايير.',
+        benefits: ['أمان عالي', 'كفاءة الطاقة', 'مرونة التوسع'],
+        steps: ['حساب الأحمال الكهربائية', 'تخطيط الدوائر واللوحات', 'مخططات تنفيذية']
+      },
+      'landscape-design': {
+        title: 'تخطيط المساحات الخضراء (لاندسكيب)',
+        summary: 'تصميم وتنسيق الحدائق والمساحات الخارجية بما يعزز الجمال والوظيفة.',
+        benefits: ['تحسين جودة الحياة', 'استدامة وريّ فعال', 'تكامل بصري مع المبنى'],
+        steps: ['مسح الموقع والمتطلبات', 'مخططات لاندسكيب', 'تفاصيل النباتات والري والإضاءة']
+      },
+      'safety-drawings-approval': {
+        title: 'مراجعة واعتماد تصميم مخططات السلامة',
+        summary: 'مراجعة تصميمات السلامة والتأكد من مطابقتها واعتمادها لدى الجهات.',
+        benefits: ['توافق نظامي', 'تقليل التعديلات', 'تسريع الاعتماد'],
+        steps: ['مراجعة التصميم', 'إصدار الملاحظات', 'التعديل والاعتماد النهائي']
+      },
+
+      /* ===== Safety Services ===== */
+      'safety-evacuation-plans': {
+        title: 'تصميم واعتماد مخططات الإخلاء والسلامة المعمارية',
+        summary: 'إعداد مخططات إخلاء دقيقة مطابقة لاشتراطات السلامة والجهات المختصة.',
+        benefits: ['مطابقة الأكواد واللوائح', 'رفع كفاءة الاستجابة للطوارئ', 'تقليل المخاطر على الأرواح والممتلكات'],
+        steps: ['حصر المخاطر ومسارات الإخلاء', 'تصميم المخطط وفق الأكواد', 'مراجعة واعتماد المخططات لدى الجهة المختصة']
+      },
+      'safety-fire-prevention-report': {
+        title: 'إعداد تقارير ملائمة لأنظمة الوقاية من الحريق',
+        summary: 'تقارير فنية تُظهر مدى التزام المشروع باشتراطات الوقاية ومكافحة الحريق.',
+        benefits: ['توافق نظامي كامل', 'تحديد الثغرات ومعالجتها', 'تسريع إجراءات الاعتماد'],
+        steps: ['زيارة الموقع وجمع البيانات', 'تحليل الأنظمة الحالية', 'إصدار التقرير وتوصيات التحسين']
+      },
+      'safety-civil-defense-license': {
+        title: 'إصدار ترخيص الدفاع المدني وترخيص السلامة',
+        summary: 'إدارة ملف الاعتماد كاملاً حتى الحصول على الترخيص من الدفاع المدني.',
+        benefits: ['تقليل المدد الزمنية', 'متابعة المعاملة فنياً وإدارياً', 'ضمان الامتثال الكامل'],
+        steps: ['تجهيز الملف والمستندات', 'رفع الطلب والمتابعة', 'استلام الترخيص وتسليمه']
+      },
+      'safety-report-approval': {
+        title: 'إصدار تقرير السلامة والحصول على الاعتماد',
+        summary: 'تقرير سلامة شامل مع متابعة الاعتماد لدى الجهة المختصة حتى القبول.',
+        benefits: ['توثيق فني معتمد', 'تقليل ملاحظات المراجعة', 'رفع نسبة القبول'],
+        steps: ['إعداد التقرير الفني', 'مراجعة داخلية للجودة', 'رفع التقرير ومتابعة الاعتماد']
+      },
+      'safety-drawings-review': {
+        title: 'مراجعة مخططات الأمن والسلامة واعتمادها',
+        summary: 'مراجعة هندسية دقيقة لمخططات السلامة والتأكد من توافقها مع الأكواد.',
+        benefits: ['اكتشاف التعارضات مبكراً', 'تخفيض التعديلات أثناء التنفيذ', 'تسريع الاعتماد'],
+        steps: ['استلام المخططات', 'المراجعة وفق الأكواد', 'إصدار التعليقات والتعديل حتى الاعتماد']
+      },
+      'safety-fire-sector-report': {
+        title: 'إصدار تقرير قطاع حريق مستقل',
+        summary: 'توثيق هندسي متخصص لقطاع الحريق داخل المشروع حسب المتطلبات النظامية.',
+        benefits: ['توثيق معتمد', 'وضوح المتطلبات التنفيذية', 'دعم قرار الجهة المختصة'],
+        steps: ['حصر مكونات القطاع', 'إعداد التقرير الفني', 'اعتماد التقرير لدى الجهة']
+      },
+      'safety-license-renewal': {
+        title: 'تجديد ترخيص الدفاع المدني',
+        summary: 'تجديد الترخيص القائم بعد استيفاء الاشتراطات والتأكد من جاهزية الموقع.',
+        benefits: ['استمرارية العمل بدون تعطل', 'تفادي المخالفات والغرامات', 'تحسين أنظمة السلامة'],
+        steps: ['تقييم الوضع الحالي', 'معالجة الملاحظات إن وجدت', 'رفع طلب التجديد والمتابعة حتى الإصدار']
+      },
+      'safety-site-handover': {
+        title: 'تسليم المواقع للدفاع المدني',
+        summary: 'تحضير الموقع وإجراءات التسليم الرسمي للدفاع المدني بما يضمن القبول.',
+        benefits: ['تنسيق فعّال يوم التسليم', 'تقليل احتمالات الرفض', 'تسليم مُوثّق'],
+        steps: ['إعداد قائمة التدقيق', 'جولة ميدانية للتأكد من الجاهزية', 'تنسيق موعد التسليم والحضور']
+      },
+      'safety-receipt-certificate': {
+        title: 'إصدار شهادة استلام من المكتب الهندسي',
+        summary: 'شهادة استلام رسمية للمشروع/الجزء المُنجز صادرة من مكتب هندسي معتمد.',
+        benefits: ['توثيق بنود الاستلام', 'مرجعية قانونية', 'تعزيز الثقة مع الجهات'],
+        steps: ['فحص الأعمال المنفذة', 'تحرير محضر الاستلام', 'إصدار الشهادة وتسليمها']
+      },
+
+      /* ===== Surveying Services ===== */
+      'survey-topographic': {
+        title: 'الرفع المساحي',
+        summary: 'رفع مساحي دقيق لحدود الموقع والمناسيب والمعالم باستخدام أجهزة معتمدة.',
+        benefits: ['دقة عالية للبيانات', 'خرائط ومخططات حديثة', 'دعم قرارات التصميم والتنفيذ'],
+        steps: ['زيارة الموقع ومعاينته', 'إجراء القياسات الميدانية', 'إصدار المخططات والنتائج']
+      },
+      'survey-subdivision-merge': {
+        title: 'تجزئة ودمج الأراضي',
+        summary: 'إجراءات تقسيم القطع أو دمجها وفق الأنظمة والاشتراطات البلدية.',
+        benefits: ['مطابقة نظامية', 'تخطيط أمثل للقطع', 'تسريع الموافقات'],
+        steps: ['دراسة الوضع الحالي', 'إعداد المقترح المساحي', 'رفع الطلب والمتابعة حتى الاعتماد']
+      },
+      'survey-deed-update': {
+        title: 'تحديث الصكوك',
+        summary: 'تحديث بيانات الصك بناءً على أحدث الرفع المساحي والحدود.',
+        benefits: ['تطابق الصك مع الواقع', 'تقليل الخلافات العقارية', 'جاهزية للتعاملات الرسمية'],
+        steps: ['رفع مساحي معتمد', 'مراجعة البيانات والمستندات', 'تحديث الصك لدى الجهة المختصة']
+      },
+      'survey-deed-amend': {
+        title: 'تعديل الصكوك',
+        summary: 'تعديل بيانات الصك لتصحيح حدود أو مساحات أو ملاحظات رسمية.',
+        benefits: ['تصحيح قانوني معتمد', 'وضوح الملكية والحدود', 'تسهيل البيع والشراء'],
+        steps: ['تحليل الصك والموقع', 'إعداد مذكرة التعديل', 'رفع الطلب حتى إصدار التعديل']
+      },
+      'survey-reports': {
+        title: 'إعداد التقارير المساحية',
+        summary: 'تقارير فنية مساحية موثّقة للاستخدامات الرسمية أو الفنية.',
+        benefits: ['اعتمادية عالية', 'وضوح فني', 'دعم القرارات الهندسية'],
+        steps: ['جمع البيانات', 'تحليل النتائج', 'إصدار التقرير وتسليمه']
+      },
+      'survey-land-staking': {
+        title: 'توقيع الأراضي',
+        summary: 'تثبيت نقاط وحدود الأرض على الطبيعة وفق المخططات المعتمدة.',
+        benefits: ['منع التعديات والاختلافات', 'دقة التنفيذ', 'توثيق نقاط التوقيع'],
+        steps: ['اعتماد المخطط المرجعي', 'إنزال الإحداثيات ميدانياً', 'تثبيت العلامات والتقرير']
+      },
+      'survey-quantity-takeoff': {
+        title: 'حصر الكميات',
+        summary: 'استخراج كميات دقيقة للأعمال التنفيذية لدعم العطاءات والتكلفة.',
+        benefits: ['تسعير دقيق', 'تقليل الهدر', 'تحكم أفضل في الميزانية'],
+        steps: ['مراجعة المخططات', 'قياسات وحسابات تفصيلية', 'تسليم جداول الكميات']
+      },
+      'survey-unit-subdivision': {
+        title: 'فرز الوحدات السكني',
+        summary: 'إجراءات فرز الوحدات السكنية وإصدار الصكوك المستقلة لكل وحدة.',
+        benefits: ['تنظيم الملكيات', 'سهولة البيع والتأجير', 'مطابقة المتطلبات النظامية'],
+        steps: ['مطابقة المخططات والمعايير', 'إعداد ملف الفرز', 'رفع الطلب والمتابعة حتى إصدار الصكوك']
+      }
+    };
+
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    function renderService() {
+      const id = getParam('id');
+      const svc = SERVICES[id] || SERVICES['license-renew'];
+      document.getElementById('svc-title').textContent = svc.title;
+      document.getElementById('svc-summary').textContent = svc.summary;
+
+      const bList = document.getElementById('svc-benefits-list');
+      bList.innerHTML = '';
+      svc.benefits.forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = t;
+        bList.appendChild(li);
+      });
+
+      const sList = document.getElementById('svc-steps-list');
+      sList.innerHTML = '';
+      svc.steps.forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = t;
+        sList.appendChild(li);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderService);
+  </script>
+
+  <script type="module">
+    window.USE_FIREBASE = true;
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlkzijmGfhZADKtiPwOjSyfxR-nnodV_c",
+      authDomain: "ewan-website.firebaseapp.com",
+      projectId: "ewan-website",
+      storageBucket: "ewan-website.firebasestorage.app",
+      messagingSenderId: "94102066525",
+      appId: "1:94102066525:web:f1e322361442b25dd7c4b4",
+      measurementId: "G-R2ZJ440R1J"
+    };
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    await signInAnonymously(auth).catch(console.error);
+
+    const svcForm = document.querySelector('main.service-detail .quote-form');
+    if (svcForm) {
+      const params = new URLSearchParams(location.search);
+      const serviceId = params.get('id') || 'unknown';
+      svcForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const [nameEl, emailEl, phoneEl] = svcForm.querySelectorAll('input');
+        const noteEl = svcForm.querySelector('textarea');
+        await addDoc(collection(db, 'service_requests'), {
+          serviceId,
+          name: nameEl.value.trim(),
+          email: emailEl.value.trim(),
+          phone: phoneEl.value.trim(),
+          note: noteEl.value.trim(),
+          createdAt: serverTimestamp(),
+          source: 'service'
+        });
+        alert('تم إرسال طلب الخدمة');
+        svcForm.reset();
+      });
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
